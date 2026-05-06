@@ -404,10 +404,16 @@ input[type="color"]::placeholder {
 -------------------------------------------------------------- */
 
 h1,
+.h1,
 h2,
+.h2,
 h3,
+.h3,
 h4,
+.h4,
 h5,
+.h5,
+.h6,
 h6 {
     text-rendering: optimizeLegibility;
     color: var(--heading-color);
@@ -417,26 +423,31 @@ h6 {
 }
 
 
+.h1,
 h1 {
     line-height: 48px;
     font-size: 40px;
 }
 
+.h2,
 h2 {
     line-height: 38px;
     font-size: 30px;
 }
 
+.h3,
 h3 {
     line-height: 30px;
     font-size: 24px;
 }
 
+.h4,
 h4 {
     font-size: 20px;
     line-height: 25px;
 }
 
+.h5,
 h5 {
     line-height: 23px;
     font-size: 18px;

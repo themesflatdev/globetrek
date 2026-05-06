@@ -1467,7 +1467,7 @@
 
           minus?.addEventListener("click", (e) => {
             e.stopPropagation();
-            let value = parseInt(input.value) || 0;
+            let value = parseInt(input.value, 10) || 0;
             if (value > 0) {
               input.value = value - 1;
               updateCurrent();
@@ -1476,7 +1476,7 @@
 
           plus?.addEventListener("click", (e) => {
             e.stopPropagation();
-            let value = parseInt(input.value) || 0;
+            let value = parseInt(input.value, 10) || 0;
             input.value = value + 1;
             updateCurrent();
           });
@@ -1489,9 +1489,9 @@
 
         function updateCurrent() {
           const adults =
-            parseInt(guestItems[0]?.querySelector("input").value) || 0;
+            parseInt(guestItems[0]?.querySelector("input").value, 10) || 0;
           const children =
-            parseInt(guestItems[1]?.querySelector("input").value) || 0;
+            parseInt(guestItems[1]?.querySelector("input").value, 10) || 0;
 
           let parts = [];
           if (adults > 0) parts.push(`${adults} Adult${adults > 1 ? "s" : ""}`);
@@ -1833,8 +1833,8 @@
     const valueChildrenSpan = bookingForm.querySelector(".value-child");
 
     function calculateTotal() {
-      const adultCount = parseInt(adultInput?.value) || 0;
-      const childrenCount = parseInt(childrenInput?.value) || 0;
+      const adultCount = parseInt(adultInput?.value, 10) || 0;
+      const childrenCount = parseInt(childrenInput?.value, 10) || 0;
 
       let total = 0;
       total += adultCount * PRICES.adult;
@@ -1861,8 +1861,8 @@
 
     // Validate max guest limit
     function validateGuestCount() {
-      const adultCount = parseInt(adultInput?.value) || 0;
-      const childrenCount = parseInt(childrenInput?.value) || 0;
+      const adultCount = parseInt(adultInput?.value, 10) || 0;
+      const childrenCount = parseInt(childrenInput?.value, 10) || 0;
       const totalGuests = adultCount + childrenCount;
 
       if (totalGuests > TOUR_INFO.maxGuest) {
@@ -1966,17 +1966,17 @@
         tourTime: formData.get("tour_time") || "",
 
         // Guest Information
-        adults: parseInt(adultInput?.value) || 0,
-        children: parseInt(childrenInput?.value) || 0,
+        adults: parseInt(adultInput?.value, 10) || 0,
+        children: parseInt(childrenInput?.value, 10) || 0,
         totalGuests:
-          (parseInt(adultInput?.value) || 0) +
-          (parseInt(childrenInput?.value) || 0),
+          (parseInt(adultInput?.value, 10) || 0) +
+          (parseInt(childrenInput?.value, 10) || 0),
 
         // Pricing Details
         adultPrice: PRICES.adult,
         childrenPrice: PRICES.children,
-        adultTotal: (parseInt(adultInput?.value) || 0) * PRICES.adult,
-        childrenTotal: (parseInt(childrenInput?.value) || 0) * PRICES.children,
+        adultTotal: (parseInt(adultInput?.value, 10) || 0) * PRICES.adult,
+        childrenTotal: (parseInt(childrenInput?.value, 10) || 0) * PRICES.children,
 
         // Services
         servicePerBooking: serviceBookingCheckbox?.checked || false,
@@ -1992,8 +1992,8 @@
           : 0,
 
         servicePerPersonTotal: servicePersonCheckbox?.checked
-          ? ((parseInt(adultInput?.value) || 0) +
-              (parseInt(childrenInput?.value) || 0)) *
+          ? ((parseInt(adultInput?.value, 10) || 0) +
+              (parseInt(childrenInput?.value, 10) || 0)) *
             PRICES.servicePerPerson
           : 0,
         // Total
@@ -2263,7 +2263,7 @@
             e.preventDefault();
             e.stopPropagation();
 
-            var value = parseInt($input.val()) || 0;
+            var value = parseInt($input.val(), 10) || 0;
 
             if (value > 0) {
                 $input.val(value - 1);
@@ -2275,13 +2275,13 @@
             e.preventDefault();
             e.stopPropagation();
 
-            var value = parseInt($input.val()) || 0;
+            var value = parseInt($input.val(), 10) || 0;
             $input.val(value + 1);
             updatePeopleCurrent();
         });
 
         $input.on('change', function () {
-            if (parseInt($input.val()) < 0 || $input.val() === '') {
+            if (parseInt($input.val(), 10) < 0 || $input.val() === '') {
                 $input.val(0);
             }
 
@@ -2290,8 +2290,8 @@
     });
 
     var updatePeopleCurrent = function () {
-        var adults = parseInt($guestItems.eq(0).find('input').val()) || 0;
-        var children = parseInt($guestItems.eq(1).find('input').val()) || 0;
+        var adults = parseInt($guestItems.eq(0).find('input').val(), 10) || 0;
+        var children = parseInt($guestItems.eq(1).find('input').val(), 10) || 0;
 
         var parts = [];
 
